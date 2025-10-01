@@ -3,6 +3,7 @@ import app from "./app"
 import { SECRET } from "./config/env";
 import connectDB from "./config/database";
 import gracefulShutdown, { setServer } from "./config/shutdown";
+import seedAdmin from "./utils/seedAdmin";
 
 
 let server: Server;
@@ -21,7 +22,7 @@ const startServer = async () => {
 // CALL SYNCHRONIZING ===> FIRST START SERVER THEN SEEDING SUPER ADMIN
 (async () => {
     await startServer();
-    // await seedAdmin();
+    await seedAdmin()
 })();
 
 
