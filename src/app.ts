@@ -3,6 +3,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import { HTTP_STATUS } from "./constants/httpStatus";
 import notFound from "./middlewar/notFound";
+import { router } from "./routes";
 
 
 const app = express();
@@ -15,7 +16,7 @@ app.use(cors());
 
 
 // APPLICATION ROUTE MIDDLEWARE
-// app.use("/api/v1");
+app.use("/api/v1", router);
 
 
 // APPLICATION ROOT ROUTE
