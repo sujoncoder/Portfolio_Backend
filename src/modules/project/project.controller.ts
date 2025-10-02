@@ -23,12 +23,15 @@ export const createProject = catchAsync(async (req: Request, res: Response) => {
 
 // GET ALL PROJECT CONTROLLER
 export const getAllProject = catchAsync(async (req: Request, res: Response) => {
-    const result = await Project.find();
+    const projects = await Project.find();
     sendResponse(res, {
         success: true,
         statusCode: HTTP_STATUS.OK,
         message: "Retrived all project successfully",
-        data: result
+        data: {
+            total: projects.length,
+            projects
+        }
     });
 });
 

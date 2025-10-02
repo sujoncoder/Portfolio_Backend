@@ -2,8 +2,8 @@ import { z } from "zod";
 
 
 // CATEGORY ZOD SCHEMA
-const categorySchema = z.enum(["frontend", "fullstack"], {
-    error: "Category must be either 'frontend' or 'fullstack'",
+const categorySchema = z.enum(["programming", "web", "tools"], {
+    error: "Category must be either 'programming' or 'web' or 'tools'",
 });
 
 
@@ -17,8 +17,8 @@ export const projectValidationSchema = z.object({
                     ? "Title must be a string"
                     : undefined,
     })
-        .min(3, { error: "Title must be at least 3 characters long" })
-        .max(100, { error: "Title cannot exceed 100 characters" })
+        .min(2, { error: "Title must be at least 2 characters long" })
+        .max(30, { error: "Title cannot exceed 30 characters" })
         .trim(),
 
     category: categorySchema,
@@ -84,7 +84,7 @@ export const projectValidationSchema = z.object({
 });
 
 
-// Optional: Update schema (partial validation)
+// PROJECT UPDATE ZOD SCHEMA
 export const updateProjectValidationSchema = z.object({
     title: z
         .string()
