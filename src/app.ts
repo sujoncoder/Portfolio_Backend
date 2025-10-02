@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 import { HTTP_STATUS } from "./constants/httpStatus";
 import notFound from "./middlewar/notFound";
 import { router } from "./routes";
+import { globalErrorHandler } from "./middlewar/globalErrorHandler";
 
 
 const app = express();
@@ -30,5 +31,8 @@ app.use("/", (req: Request, res: Response) => {
 
 // NOT-FOUND ROUTE
 app.use(notFound);
+
+// GLOBAL ERROR HANDLER
+app.use(globalErrorHandler);
 
 export default app;
