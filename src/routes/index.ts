@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { authRoutes } from "../modules/auth/auth.route";
+import { projectRoutes } from "../modules/project/project.route";
 
 
 // DEFAULT ROUTE
@@ -9,6 +10,10 @@ const moduleRoutes = [
     {
         path: "/auth",
         route: authRoutes
+    },
+    {
+        path: "/projects",
+        route: projectRoutes
     },
 ];
 
