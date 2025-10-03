@@ -1,8 +1,12 @@
-type Category = "programming" | "web" | "tools"
+export enum SKILL_CATEGORY {
+    PROGRAMMING = "programming",
+    WEB = "web",
+    TOOLS = "tools"
+};
 
 export interface ISkill {
     title: string;
-    category: Category;
+    category: SKILL_CATEGORY;
     icon: string;
     rating: number;
 };

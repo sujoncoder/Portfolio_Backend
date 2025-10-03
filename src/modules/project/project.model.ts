@@ -1,5 +1,5 @@
 import { model, Schema } from "mongoose";
-import type { IProject } from "./project.interface";
+import { PROJECT_CATEGORY, type IProject } from "./project.interface";
 
 
 // PROJECT SCHEMA
@@ -13,17 +13,17 @@ const projectSchema = new Schema<IProject>({
         type: String,
         required: [true, 'Category is required'],
         lowercase: true,
-        enum: ['frontend', 'fullstack']
+        enum: {
+            values: Object.values(PROJECT_CATEGORY),
+            message: "{VALUE} is not a valid category"
+        }
     },
     description: {
         type: String,
         required: [true, 'Description is required'],
         trim: true
     },
-    image: {
-        type: String,
-        required: [true, 'Image is required']
-    },
+    image: { type: String, required: [true, 'Image is required'] },
     technologies: {
         type: [String],
         required: [true, 'Technologies are required'],
