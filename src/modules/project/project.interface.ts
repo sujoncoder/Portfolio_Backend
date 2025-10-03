@@ -1,8 +1,11 @@
-type ICategory = "frontend" | "fullstack";
+export enum PROJECT_CATEGORY {
+    FRONTEND = "frontend",
+    FULLSTACK = "fullstack"
+};
 
 export interface IProject {
     title: string;
-    category: ICategory;
+    category: PROJECT_CATEGORY;
     description: string;
     image: string;
     technologies: string[];

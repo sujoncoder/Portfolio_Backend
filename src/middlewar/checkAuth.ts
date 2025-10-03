@@ -15,7 +15,8 @@ export const checkAuth: RequestHandler = async (req: Request, res: Response, nex
         if (!accessToken) {
             throw new ApiError(403, "No token received!");
         };
-        verifyToken(accessToken, SECRET.JWT_ACCESS_SECRET) as JwtPayload;
+        const verifiedToken = verifyToken(accessToken, SECRET.JWT_ACCESS_SECRET) as JwtPayload;
+        req.user = verifiedToken;
         next();
     } catch (error) {
         next(error);
